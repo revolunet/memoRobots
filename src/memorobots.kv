@@ -1,0 +1,96 @@
+#:kivy 1.4
+#:import kivy kivy
+
+
+<HomeScreen>:
+    canvas:
+        Rectangle:
+            size: root.width, root.height
+            source: 'img/home.png'
+    Button:
+        size_hint: None, None
+        width: 150
+        height: 150
+        x: root.center_x - self.width / 2
+        border: 0, 0, 0, 0
+        y: root.height * 0.8 - self.height
+        background_color: (1, 1, 1, 1)
+        background_normal: 'img/btn_play.png'
+        background_down: 'img/btn_play_down.png'
+        on_release: kivy.app.App.get_running_app().show_game()
+    Button:
+        size_hint: None, None
+        width: 75
+        height: 69
+        right: root.width - 15
+        top:self.height + 15
+        border: 0, 0, 0, 0
+        background_color: (1, 1, 1, 1)
+        background_normal: 'img/btn_credits.png'
+        background_down: 'img/btn_credits_down.png'
+        on_release: kivy.app.App.get_running_app().show_about()
+
+<GameLayout>:
+    cards: cards
+    orientation: 'horizontal'
+    canvas:
+        Rectangle:
+            size: root.width, root.height
+            source: 'img/bg_game.png'
+    RelativeLayout:
+        size_hint: None, 1
+        width: 95
+        Button:
+            border: 0, 0, 0, 0
+            background_color: (1, 1, 1, 1)
+            background_normal: 'img/btn_back.png'
+            background_down: 'img/btn_back_down.png'
+            size_hint: None, None
+            on_release: kivy.app.App.get_running_app().show_home()
+            center_y: root.center_y
+            x: 15
+            width: 95
+            height: 100
+    GridLayout:
+        id: cards
+        cols: 4
+        padding: 20
+        spacing: 10
+
+<AboutScreen>:
+    canvas:
+        Rectangle:
+            size: root.width, root.height
+            source: 'img/credits.png'
+    Label:
+        text: "\n \n[size=26]A game by [b]revolunet[/b][/size]\n \n \nWe'd like to thanks :\n \nThe awesome Kivy and RoboHash.org teams\n \nAll the kids testing :)\n \n \n[size=16]contact us : contact@revolunet.com[/size]"
+        font_size: 20
+        halign: 'center'
+        markup: True
+    Button:
+        border: 0, 0, 0, 0
+        background_color: (1, 1, 1, 1)
+        background_normal: 'img/btn_back.png'
+        background_down: 'img/btn_back_down.png'
+        size_hint: None, None
+        center_y: root.center_y
+        x: 15
+        width: 95
+        height: 100
+        on_release: kivy.app.App.get_running_app().show_home()
+
+<WonPopup>:
+    image: image
+    auto_dismiss: True
+    border: 0, 0, 0, 0
+    size_hint: None, None
+    size: 0, 0
+    background_color: [0, 0, 0, .8]
+    on_dismiss: kivy.app.App.get_running_app().restart()
+    on_touch_down: self.dismiss()
+    Image:
+        id: image
+        source: 'img/bravo.png'
+        allow_stretch: True
+        keep_ratio: True
+
