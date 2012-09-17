@@ -7,3 +7,8 @@ memoRobots uses CC licensed graphics from robohash.org
 
 The game has been published on Android Play Store ~~and iOS App Store~~
 
+Todo :
+
+ - More boards based on screen ratios
+ - Scoring / Gameplay
+ - Sounds
